@@ -1,0 +1,27 @@
+language: python
+python:
+- pypy
+- pypy3
+- '2.7'
+- '3.3'
+- '3.4'
+- '3.5'
+- '3.6'
+sudo: false
+install:
+  - pip install coveralls
+script:
+  - nosetests --with-coverage --cover-package=union_find
+after_success:
+  coveralls
+deploy:
+  provider: pypi
+  user: minghu6
+  password:
+    secure: B5MU43Kon6a1rzB6Z07mABB8+qDlymfZ4zFYQeAa5F5I1iOTY8ub1eL+AWf1hkNguhCUHsHPSvI6Q5V6kUP1nhgaCUa8jbpj1owSc2asOSMAFPkMQtVo7Bs3lRYRdSdqGrpx3X+z3ddHv3lpQCQTcPPRZSMP0O1LY7AA7+FHpZkwBNWEu6OhTLdSXnXRPZHKiwfr/OPm6ceUdFsLmI+yoRugwJ43ptK/dPxAnb7Rey/P2kLuHzK40rfVmvmtCv7at+x9VSzolVgIQhx6V6LcHYbAd16UIREr2BrRiJxRvqJluse+UAKTBwC/28CFwVg1hMzFrYsZk2b/1xULe0JQ5UzOBo9ydpQNvlLfJphY0ESE7ZRUK2baWvImgkBGllG6aAoLCdK7d2a/fkU7a2MUHdb5/VI2UTOv+CZchZ44k0Ckh2uVHW2q+6DpvQrNeZhFV1ZNp+e0/jWTorFvJy+M6lWyJf/b3134odZdgk7F608t7C6SD27sOlMzDAp+0j2PnECdvj8g13hSf4tuZk+noucZEwVSm7C4MGxsntlh6axAXNDnVa9Lcv5GnKrAKmiAC6AtKMNIh0TT87+/x+QdXwDHb1tX1UccGBsO/MiY7D+DaDF33GcfORLmci6YCcWV0GVYTjsyduhAUbvIyh7GnK4ADixfywTwy40PDa55gvo=
+  on:
+    tags: true
+    all_branches: true
+    repo: minghu6/union-find
+
+distributions: sdist bdist_wheel
