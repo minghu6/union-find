@@ -13,7 +13,7 @@ setup(
     license="MIT-LICENSE",
     url='http://github.com/minghu6/union-find',
     platforms=["any"],
-    description="union-find data structure. ",
+    description="union-find data structure.",
     long_description=README,
     py_modules=['union_find'],
     package_data={'': ['MIT-LICENSE']},
