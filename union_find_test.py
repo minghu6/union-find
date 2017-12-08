@@ -9,6 +9,7 @@ import pickle
 
 def test_pickle():
     union_find1 = UnionFind('root')
+    union_find1.data = union_find1.data + 'ooo'
     eq_(pickle.loads(pickle.dumps(union_find1)), union_find1)
 
     union_find1.create_sub_union_find('sub1')
