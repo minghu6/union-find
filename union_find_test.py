@@ -2,8 +2,8 @@
 """
 
 """
-from nose.tools import eq_, assert_true
-from union_find import UnionFind
+from nose.tools import eq_, assert_true, assert_false
+from union_find import UnionFind, _isiterable
 import pickle
 
 
@@ -61,3 +61,7 @@ def test___str__():
     root1.create_sub_union_find('sub1')
 
     isinstance(root1.__str__(), str)
+
+
+def test__isiterable():
+    assert_false(_isiterable(12))
