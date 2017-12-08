@@ -39,6 +39,9 @@ class UnionFind(object):
         if self is other:
             return True
 
+        if other is None:
+            return False
+
         # We can ensure that the max rank of union-find <= 2
         if self._parent is None and other.parent is None:
             if self._data != other.data:
@@ -93,7 +96,10 @@ class UnionFind(object):
         if not _isiterable(other_union_finds):
             other_union_finds = [other_union_finds]
 
-        for each_other_union_find in list(other_union_finds):
+        for each_other_union_find in other_union_finds:
+            if each_other_union_find is None:
+                return False
+
             if self._parent is None:
                 if self == each_other_union_find.parent:
                     return True
@@ -106,7 +112,7 @@ class UnionFind(object):
         if not _isiterable(other_union_finds):
             other_union_finds = [other_union_finds]
 
-        for each_other_union_find in list(other_union_finds):
+        for each_other_union_find in other_union_finds:
             self._unite(each_other_union_find)
     
     def _unite(self, other_union_find):

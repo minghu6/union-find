@@ -9,7 +9,6 @@ import pickle
 
 def test_pickle():
     union_find1 = UnionFind('root')
-    union_find1.data = union_find1.data + 'ooo'
     eq_(pickle.loads(pickle.dumps(union_find1)), union_find1)
 
     union_find1.create_sub_union_find('sub1')
@@ -34,6 +33,11 @@ def test_same():
     assert_true(sub1.same(sub2))
     assert_true(sub2.same(sub1))
     assert_true(sub1.same([sub1, sub2]))
+
+    union_find2 = UnionFind('root2', subs=[])
+    assert_false(union_find1.same(union_find2))
+    union_find2.data = 'root'
+    assert_false(union_find1.same(union_find2))
 
 
 def test_union():
@@ -65,4 +69,4 @@ def test___str__():
 
 
 def test__isiterable():
-    assert_false(_isiterable(12))
+    assert_false(_isiterable('aaa'))
